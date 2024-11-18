@@ -3,7 +3,6 @@ export interface Pokemon {
     name: string
     types: Type[]
     sprites: Sprites
-
 }
 
 export interface Type {
