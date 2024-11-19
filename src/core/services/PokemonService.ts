@@ -6,11 +6,15 @@ import { Pokemon } from '../model/pokemon';
 export const PokemonService = {
     
     async getAll(): Promise<PokemonDto[]>{
-        return PokemonApi.getAll().then((response) => {
-            return response.map((pokemon: Pokemon) => {
+        return PokemonApi.getAll().then(async (response) => {
+            /*return response.data.results.map(async (pokemon: Pokemon) => {
                 return PokemonFactory.create(pokemon);
-            }    
-        );
+            }  */  
+            return await Promise.all(
+                response.data.results.map((pokemon: Pokemon) => {
+                    return PokemonApi.findByName(pokemon.name).then(poke => PokemonFactory.create(poke.data));
+                })
+            );
         }).catch(error => {
             throw new error;
         });

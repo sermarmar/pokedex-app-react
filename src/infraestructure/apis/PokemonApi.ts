@@ -7,14 +7,7 @@ const api = axios.create({
 
 export const PokemonApi = {
     
-    getAll: () => api.get('/pokemon').then(async response => {
-        const list: Pokemon[] = await Promise.all(
-            response.data.results.map((pokemon: Pokemon) => {
-                return api.get<Pokemon>(`/pokemon/${pokemon.name}`).then(poke => poke.data);
-            })
-        );
-        return list;
-    }),
+    getAll: () => api.get('/pokemon'),
     findByName: (name: string) => api.get<Pokemon>(`/pokemon/${name}`)
 
 }
