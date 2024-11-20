@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Pokemon } from '../../core/model/pokemon';
+import { Pokemon } from '../../core/model/Pokemon';
 
 const api = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/'

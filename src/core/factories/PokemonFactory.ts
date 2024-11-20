@@ -1,5 +1,5 @@
 import { PokemonDto, Sprites } from '../dtos/pokemonDto';
-import { Pokemon } from '../model/pokemon';
+import { Pokemon } from '../model/Pokemon';
 
 export const PokemonFactory = {
     create(data: Pokemon): PokemonDto {
